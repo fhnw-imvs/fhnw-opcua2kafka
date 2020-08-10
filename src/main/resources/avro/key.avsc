@@ -1,0 +1,12 @@
+{
+  "namespace": "ch.fhnw.imvs.opcua2kafka.schemas",
+  "type": "record",
+  "name": "Key",
+  "fields": [
+    {
+      "name": "nodeId",
+      "type": "string",
+      "doc": "OPC UA NodeId Attribute"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+[
+{
+  "namespace": "ch.fhnw.imvs.opcua2kafka.schemas",
+  "name": "Metadata",
+  "type": "record",
+  "fields": [
+    {
+      "name": "AggregateId",
+      "type": "string",
+      "doc": "Identifies the aggregate taking into account that this aggregate could be emitted / created from different producers. Therefore it is essential that producers use unique id's."
+    },
+    {
+      "name": "TraceId",
+      "type": "string",
+      "doc": "UUID according to ISO/IEC 11578:1996. The TraceId identifies the event uniquely and must be logged and transported to all processing entities in the context of this event. Format pattern: Pattern.compile('([a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12})'"
+    },
+    {
+      "doc": "Timestamp of message on the global timeline, independent of a particular time zone or calendar, with a precision of one microseconds.",
+      "name": "Timestamp",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-micros"
+      }
+    }
+  ]
+},
+{
+  "namespace": "ch.fhnw.imvs.opcua2kafka.schemas",
+  "type": "record",
+  "name": "Payload",
+  "fields": [
+    {
+      "name": "nodeId",
+      "type": "string",
+      "doc": "OPC UA NodeId Attribute"
+    },
+    {
+      "name": "browseName",
+      "type": "string",
+      "doc": "OPC UA BrowseName Attribute"
+    },
+    {
+      "name": "displayName",
+      "type": "string",
+      "doc": "OPC UA DisplayName Attribute"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "doc": "OPC UA Description Attribute"
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "doc": "OPC UA Value Attribute"
+    }
+  ]
+},
+
+{
+  "namespace": "ch.fhnw.imvs.opcua2kafka.schemas",
+  "name": "Message",
+  "type": "record",
+  "fields": [
+    {
+      "name": "metadata",
+      "type": "Metadata",
+      "doc": "Metadata as specified above"
+    },
+    {
+      "name": "payload",
+      "type": "Payload",
+      "doc": "Payload as specified above"
+    }
+  ]
+}
+]
